@@ -6,7 +6,7 @@
 /*   By: misaguir <misaguir@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 12:46:54 by misaguir          #+#    #+#             */
-/*   Updated: 2024/04/27 20:57:49 by misaguir         ###   ########.fr       */
+/*   Updated: 2024/04/28 18:04:15 by misaguir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,11 @@ void	first_read_map(char *argv, t_game *data)
 	char *line;
 
 	fd = open(argv,O_RDONLY);
+	if (fd < 0)
+		return ;
 	line = get_next_line(fd);
 	if (line == NULL)
-		print_error("Map is empty");
+		print_error("Map is empty",NULL);
 	data->width = ft_strlen_sl(line);
 	while (line)
 	{
@@ -31,7 +33,7 @@ void	first_read_map(char *argv, t_game *data)
 			if(data->width != ft_strlen_sl(line))
 			{
 				free(line);
-				print_error("Map is invalid");
+				print_error("Map is invalid",NULL);
 			}
 		}
 		data->height++;
@@ -47,9 +49,11 @@ void	second_read_map(char *argv, t_game *data)
 
 	i = 0;
 	fd = open(argv,O_RDONLY);
+	if (fd < 0)
+		return ;
 	line = ft_strdup("");
-	data->map = (char **)malloc(sizeof(char *) * ((data->height) + 1));
-	data->copy_map = (char **)malloc(sizeof(char *) * ((data->height) + 1));
+	data->map = (char **)malloc(sizeof(char *) * (data->height));
+	data->copy_map = (char **)malloc(sizeof(char *) * (data->height));
 	if(data->map == NULL || data->copy_map == NULL)
 		return ;
 	while(line)
@@ -67,8 +71,8 @@ void	second_read_map(char *argv, t_game *data)
 }
 void	check_map(t_game *data)
 {
-	check_top_and_bottom(data->map[0]);
-	check_top_and_bottom(data->map[data->height - 1]);
+	check_top_and_bottom(data->map[0],data);
+	check_top_and_bottom(data->map[data->height - 1],data);
 	int row;
 	
 	data->player = 0;
@@ -81,11 +85,11 @@ void	check_map(t_game *data)
 		row++;
 	}
 	if (data->player != 1)
-		print_error("Number players is incorrect");
+		print_error("Number players is incorrect",data);
 	if (data->collect == 0)
-		print_error("Number collect is incorrect");
+		print_error("Number collect is incorrect",data);
 	if (data->exit != 1)
-		print_error("Number exit is incorrect");
+		print_error("Number exit is incorrect",data);
 	flood_fill(data,data->x,data->y);
 }
 void	flood_fill(t_game *data, int x, int y)

@@ -6,7 +6,7 @@
 /*   By: misaguir <misaguir@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 13:09:08 by misaguir          #+#    #+#             */
-/*   Updated: 2024/04/27 21:16:46 by misaguir         ###   ########.fr       */
+/*   Updated: 2024/04/28 17:24:32 by misaguir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,17 @@ typedef struct s_game
 #define HEIGHT 512
 
 int		check_extension(char *str);
-void	print_error(char *msg);
+void	print_error(char *msg,t_game *data);
 void	first_read_map(char *argv, t_game *data);
 int		ft_strlen_sl(char *str);
 void	second_read_map(char *argv, t_game *data);
 void	check_map(t_game *data);
-void	check_top_and_bottom(char *str);
+void	check_top_and_bottom(char *str, t_game *data);
 void	check_objects_and_wall(char *str, int large,t_game *data, int row);
 void	flood_fill(t_game *data, int x, int y);
-void	check_all(char *name_map,t_game *data);
+void	check_all_map(char *name_map,t_game *data);
 void	check_map_resolved(t_game *data);
+void	free_map(char **map,t_game *data);
 /// BORRAR
 void	printmap(t_game *data);
 
