@@ -6,7 +6,7 @@
 /*   By: misaguir <misaguir@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 20:09:06 by misaguir          #+#    #+#             */
-/*   Updated: 2024/04/29 19:27:02 by misaguir         ###   ########.fr       */
+/*   Updated: 2024/04/29 20:19:44 by misaguir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ void	init_game(t_game *data)
 	if(!data->init_window)
 		print_error("Error open window",data);
 	load_textures_image(data);
-	mlx_image_to_window(data->init_window,data->image_floor,data->x * 64,data->y * 64);
+	load_image_window(data);
+	//mlx_image_to_window(data->init_window,data->image_floor,data->x * 64,data->y * 64);
 	mlx_loop(data->init_window);
 
 	
