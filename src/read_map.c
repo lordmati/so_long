@@ -6,7 +6,7 @@
 /*   By: misaguir <misaguir@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 12:46:54 by misaguir          #+#    #+#             */
-/*   Updated: 2024/04/28 18:04:15 by misaguir         ###   ########.fr       */
+/*   Updated: 2024/04/29 17:00:38 by misaguir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	first_read_map(char *argv, t_game *data)
 
 	fd = open(argv,O_RDONLY);
 	if (fd < 0)
-		return ;
+		print_error("Error file not found",data);
 	line = get_next_line(fd);
 	if (line == NULL)
 		print_error("Map is empty",NULL);
@@ -49,8 +49,6 @@ void	second_read_map(char *argv, t_game *data)
 
 	i = 0;
 	fd = open(argv,O_RDONLY);
-	if (fd < 0)
-		return ;
 	line = ft_strdup("");
 	data->map = (char **)malloc(sizeof(char *) * (data->height));
 	data->copy_map = (char **)malloc(sizeof(char *) * (data->height));
@@ -74,10 +72,7 @@ void	check_map(t_game *data)
 	check_top_and_bottom(data->map[0],data);
 	check_top_and_bottom(data->map[data->height - 1],data);
 	int row;
-	
-	data->player = 0;
-	data->exit = 0;
-	data->collect = 0;
+
 	row = 1;
  	while(row < data->height - 1)
 	{

@@ -6,7 +6,7 @@
 /*   By: misaguir <misaguir@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 13:09:08 by misaguir          #+#    #+#             */
-/*   Updated: 2024/04/28 17:24:32 by misaguir         ###   ########.fr       */
+/*   Updated: 2024/04/29 18:45:45 by misaguir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,13 @@ typedef struct s_game
 	char	**copy_map;
 	int		x;
 	int		y;
+	mlx_t	*init_window;
+	mlx_texture_t *texture_all;
+	mlx_image_t *image_floor;
+	mlx_image_t *image_wall;
+	mlx_image_t *image_exit;
+	mlx_image_t *image_coin;
+	mlx_image_t *image_player;
 }	t_game;
 
 #define WIDTH 512
@@ -47,6 +54,8 @@ void	flood_fill(t_game *data, int x, int y);
 void	check_all_map(char *name_map,t_game *data);
 void	check_map_resolved(t_game *data);
 void	free_map(char **map,t_game *data);
+void	init_game(t_game *data);
+void	load_textures_image(t_game *data);
 /// BORRAR
 void	printmap(t_game *data);
 

@@ -6,7 +6,7 @@
 #    By: misaguir <misaguir@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/25 20:50:59 by misaguir          #+#    #+#              #
-#    Updated: 2024/04/27 20:34:50 by misaguir         ###   ########.fr        #
+#    Updated: 2024/04/29 18:26:06 by misaguir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ LIBFT = ./Libft
 SRC_DIR = src/
 OBJ_DIR = obj/
 
-SRC_FILES = main check_errors utils_sl read_map so_long #poner archivos
+SRC_FILES = main check_errors utils_sl read_map so_long init_game #poner archivos
 
 SRC = $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ = $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
@@ -58,4 +58,5 @@ fclean:
 			@make -C $(LIBFT) fclean
 
 re: fclean all
+
 .PHONY: all clean fclean re
