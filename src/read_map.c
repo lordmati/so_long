@@ -6,7 +6,7 @@
 /*   By: misaguir <misaguir@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 12:46:54 by misaguir          #+#    #+#             */
-/*   Updated: 2024/04/29 17:00:38 by misaguir         ###   ########.fr       */
+/*   Updated: 2024/05/01 20:29:49 by misaguir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,26 @@
 
 void	first_read_map(char *argv, t_game *data)
 {
-	int fd;
-	char *line;
+	int		fd;
+	char	*line;
 
-	fd = open(argv,O_RDONLY);
+	fd = open(argv, O_RDONLY);
 	if (fd < 0)
-		print_error("Error file not found",data);
+		print_error("Error file not found", data);
 	line = get_next_line(fd);
 	if (line == NULL)
-		print_error("Map is empty",NULL);
+		print_error("Map is empty", NULL);
 	data->width = ft_strlen_sl(line);
 	while (line)
 	{
 		free(line);
 		line = get_next_line(fd);
-		if(line)
-		{	
-			if(data->width != ft_strlen_sl(line))
+		if (line)
+		{
+			if (data->width != ft_strlen_sl(line))
 			{
 				free(line);
-				print_error("Map is invalid",NULL);
+				print_error("Map is invalid", NULL);
 			}
 		}
 		data->height++;
@@ -43,18 +43,18 @@ void	first_read_map(char *argv, t_game *data)
 
 void	second_read_map(char *argv, t_game *data)
 {
-	int fd;
-	int i;
-	char *line;
+	int		fd;
+	int		i;
+	char	*line;
 
 	i = 0;
-	fd = open(argv,O_RDONLY);
+	fd = open(argv, O_RDONLY);
 	line = ft_strdup("");
 	data->map = (char **)malloc(sizeof(char *) * (data->height));
 	data->copy_map = (char **)malloc(sizeof(char *) * (data->height));
-	if(data->map == NULL || data->copy_map == NULL)
+	if (data->map == NULL || data->copy_map == NULL)
 		return ;
-	while(line)
+	while (line)
 	{
 		free(line);
 		line = get_next_line(fd);
@@ -67,26 +67,28 @@ void	second_read_map(char *argv, t_game *data)
 	}
 	close(fd);
 }
+
 void	check_map(t_game *data)
 {
-	check_top_and_bottom(data->map[0],data);
-	check_top_and_bottom(data->map[data->height - 1],data);
-	int row;
+	int	row;
 
 	row = 1;
- 	while(row < data->height - 1)
+	check_top_and_bottom(data->map[data->height - 1], data);
+	check_top_and_bottom(data->map[0], data);
+	while (row < data->height - 1)
 	{
-		check_objects_and_wall(data->map[row],data->width,data, row);
+		check_objects_and_wall(data->map[row], data->width, data, row);
 		row++;
 	}
 	if (data->player != 1)
-		print_error("Number players is incorrect",data);
+		print_error("Number players is incorrect", data);
 	if (data->collect == 0)
-		print_error("Number collect is incorrect",data);
+		print_error("Number collect is incorrect", data);
 	if (data->exit != 1)
-		print_error("Number exit is incorrect",data);
-	flood_fill(data,data->x,data->y);
+		print_error("Number exit is incorrect", data);
+	flood_fill(data, data->x, data->y);
 }
+
 void	flood_fill(t_game *data, int x, int y)
 {
 	if (data->copy_map[y][x] == '1' || data->copy_map[y][x] == 'F'
@@ -96,5 +98,5 @@ void	flood_fill(t_game *data, int x, int y)
 	flood_fill(data, x - 1, y);
 	flood_fill(data, x + 1, y);
 	flood_fill(data, x, y - 1);
-	flood_fill(data, x , y + 1);
+	flood_fill(data, x, y + 1);
 }

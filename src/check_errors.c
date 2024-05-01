@@ -6,7 +6,7 @@
 /*   By: misaguir <misaguir@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 11:40:57 by misaguir          #+#    #+#             */
-/*   Updated: 2024/04/28 19:30:02 by misaguir         ###   ########.fr       */
+/*   Updated: 2024/05/01 20:01:15 by misaguir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,44 +14,44 @@
 
 int	check_extension(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	while(str[i])
+	while (str[i])
 		i++;
-	if(str[i] == '\0' && str[i - 1] == 'r' && str[i - 2] == 'e'
+	if (str[i] == '\0' && str[i - 1] == 'r' && str[i - 2] == 'e'
 		&& str[i - 3] == 'b' && str[i - 4] == '.')
 		return (1);
-	return(0);
+	return (0);
 }
 
-void	check_top_and_bottom(char *str,t_game *data)
+void	check_top_and_bottom(char *str, t_game *data)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	while(str[i] == '1')
+	while (str[i] == '1')
 		i++;
-	if(str[i] == '\0' || str[i] == '\n')
+	if (str[i] == '\0' || str[i] == '\n')
 		return ;
 	else
-		print_error("Map is invalid",data);
+		print_error("Map is invalid", data);
 }
 
-void	check_objects_and_wall(char *str, int large,t_game *data, int row)
+void	check_objects_and_wall(char *str, int large, t_game *data, int row)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	if(str[i] != '1' || str[large - 1] != '1')
-		print_error("Map is invalid",data);
-	while(i < large - 1)
+	if (str[i] != '1' || str[large - 1] != '1')
+		print_error("Map is invalid", data);
+	while (i < large - 1)
 	{
-		if(str[i] != '1' && str[i] != '0' && str[i] != 'C'
+		if (str[i] != '1' && str[i] != '0' && str[i] != 'C'
 			&& str[i] != 'P' && str[i] != 'E' && str[i] != '\n'
 			&& str[i] != '\0')
-			print_error("Map is invalid",data);
-		if(str[i] == 'C')
+			print_error("Map is invalid", data);
+		if (str[i] == 'C')
 			data->collect++;
 		else if (str[i] == 'P')
 		{
@@ -64,13 +64,14 @@ void	check_objects_and_wall(char *str, int large,t_game *data, int row)
 		i++;
 	}
 }
+
 void	check_map_resolved(t_game *data)
 {
 	int	i;
-	int j;
+	int	j;
 
-	i= 0;
-	while(i < data->height - 1)
+	i = 0;
+	while (i < data->height - 1)
 	{
 		j = 0;
 		while (data->copy_map[i][j])
@@ -78,10 +79,10 @@ void	check_map_resolved(t_game *data)
 			if (data->copy_map[i][j] != 'F' && data->copy_map[i][j] != '0'
 				&& data->copy_map[i][j] != '1' && data->copy_map[i][j] != '\0'
 				&& data->copy_map[i][j] != '\n')
-				print_error("Map is not resolved",data);
+				print_error("Map is not resolved", data);
 			j++;
 		}
 		i++;
 	}
-	free_map(data->copy_map,data);
+	free_map(data->copy_map, data);
 }
