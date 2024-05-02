@@ -6,7 +6,7 @@
 /*   By: misaguir <misaguir@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 13:01:45 by misaguir          #+#    #+#             */
-/*   Updated: 2024/05/02 11:38:56 by misaguir         ###   ########.fr       */
+/*   Updated: 2024/05/02 11:57:14 by misaguir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,5 @@ int	main(int argc, char **argv)
 		init_game(&data);
 	}
 	else
-		print_error("Error arguments no valid", NULL);
+		print_error("Arguments no valid", NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: misaguir <misaguir@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 11:41:54 by misaguir          #+#    #+#             */
-/*   Updated: 2024/05/01 20:35:03 by misaguir         ###   ########.fr       */
+/*   Updated: 2024/05/02 20:09:08 by misaguir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	print_error(char *msg, t_game *data)
 		free_map(data->copy_map, data);
 		free_map(data->map, data);
 	}
+	ft_putstr_fd("Error:\n", 2);
 	ft_putstr_fd(msg, 2);
 	ft_putchar_fd('\n', 2);
 	exit(1);

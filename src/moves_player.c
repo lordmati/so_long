@@ -6,7 +6,7 @@
 /*   By: misaguir <misaguir@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 13:15:10 by misaguir          #+#    #+#             */
-/*   Updated: 2024/05/02 11:14:10 by misaguir         ###   ########.fr       */
+/*   Updated: 2024/05/02 11:55:31 by misaguir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void	move_is_correct(t_game *data, int pos_y, int pos_x, int dir)
 			mlx_close_window(data->init_mlx);
 			free_map(data->map, data);
 			ft_printf("Finish game\n");
+			exit(0);
 		}
 	}
 }

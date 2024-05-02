@@ -6,7 +6,7 @@
 /*   By: misaguir <misaguir@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 13:09:08 by misaguir          #+#    #+#             */
-/*   Updated: 2024/05/02 11:12:57 by misaguir         ###   ########.fr       */
+/*   Updated: 2024/05/02 11:54:55 by misaguir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,5 @@ void	move_is_correct(t_game *data, int pos_y, int pos_x, int dir);
 void	move_player(t_game *data, int dir);
 void	reload_player(t_game *data);
 void	load_textures(t_game *data);
-/// BORRAR
-void	printmap(t_game *data);
 
 #endif
