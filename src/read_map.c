@@ -6,7 +6,7 @@
 /*   By: misaguir <misaguir@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 12:46:54 by misaguir          #+#    #+#             */
-/*   Updated: 2024/05/01 20:29:49 by misaguir         ###   ########.fr       */
+/*   Updated: 2024/05/02 11:47:23 by misaguir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	first_read_map(char *argv, t_game *data)
 
 	fd = open(argv, O_RDONLY);
 	if (fd < 0)
-		print_error("Error file not found", data);
+		print_error("Error file not found", NULL);
 	line = get_next_line(fd);
 	if (line == NULL)
 		print_error("Map is empty", NULL);

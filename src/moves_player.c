@@ -6,7 +6,7 @@
 /*   By: misaguir <misaguir@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 13:15:10 by misaguir          #+#    #+#             */
-/*   Updated: 2024/05/01 20:14:13 by misaguir         ###   ########.fr       */
+/*   Updated: 2024/05/02 11:14:10 by misaguir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ void	move_is_correct(t_game *data, int pos_y, int pos_x, int dir)
 		{
 			data->collect--;
 			data->map[pos_y][pos_x] = '0';
-			if (!mlx_image_to_window(data->init_mlx, data->image_floor, pos_x * 64, pos_y * 64))
+			if (!mlx_image_to_window(data->init_mlx,
+					data->image_floor, pos_x * 64, pos_y * 64))
 				print_error("Error load floor", data);
 		}
 		move_player(data, dir);
@@ -83,10 +84,12 @@ void	move_player(t_game *data, int dir)
 void	reload_player(t_game *data)
 {
 	mlx_delete_image(data->init_mlx, data->image_player);
-	data->texture = mlx_load_png("textures/player.png");
-	data->image_player = mlx_texture_to_image(data->init_mlx, data->texture);
-	mlx_delete_texture(data->texture);
+	data->texture_player = mlx_load_png("textures/player.png");
+	data->image_player = mlx_texture_to_image(data->init_mlx,
+			data->texture_player);
+	mlx_delete_texture(data->texture_player);
 	if (!data->image_player)
 		print_error("Error load image_player", data);
-	mlx_image_to_window(data->init_mlx, data->image_player, data->x * 64, data->y * 64);
+	mlx_image_to_window(data->init_mlx,
+		data->image_player, data->x * 64, data->y * 64);
 }

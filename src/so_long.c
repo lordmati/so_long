@@ -6,7 +6,7 @@
 /*   By: misaguir <misaguir@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 20:09:06 by misaguir          #+#    #+#             */
-/*   Updated: 2024/05/01 20:31:03 by misaguir         ###   ########.fr       */
+/*   Updated: 2024/05/02 11:13:10 by misaguir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,12 @@ void	check_all_map(char *name_map, t_game *data)
 
 void	init_game(t_game *data)
 {
-	data->init_mlx = mlx_init(data->width * 64, data->height * 64, "so_long", false);
+	data->init_mlx = mlx_init(data->width * 64,
+			data->height * 64, "so_long", false);
 	if (!data->init_mlx)
 		print_error("Error open window", data);
-	load_textures_image(data);
+	load_textures(data);
+	load_image(data);
 	load_image_window(data);
 	mlx_key_hook(data->init_mlx, &key_press, data);
 	mlx_loop(data->init_mlx);
