@@ -6,7 +6,7 @@
 /*   By: misaguir <misaguir@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 20:09:06 by misaguir          #+#    #+#             */
-/*   Updated: 2024/05/02 11:57:34 by misaguir         ###   ########.fr       */
+/*   Updated: 2024/05/04 14:32:33 by misaguir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,6 @@ void	init_game(t_game *data)
 	load_image_window(data);
 	mlx_key_hook(data->init_mlx, &key_press, data);
 	mlx_loop(data->init_mlx);
+	free_map(data->map, data);
 	mlx_terminate(data->init_mlx);
 }
