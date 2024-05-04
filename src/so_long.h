@@ -6,7 +6,7 @@
 /*   By: misaguir <misaguir@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 13:09:08 by misaguir          #+#    #+#             */
-/*   Updated: 2024/05/02 11:54:55 by misaguir         ###   ########.fr       */
+/*   Updated: 2024/05/04 14:34:10 by misaguir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,6 @@ typedef struct s_game
 	char			**copy_map;
 	int				x;
 	int				y;
-	int				init_x;
-	int				init_y;
 	int				move;
 	mlx_t			*init_mlx;
 	mlx_texture_t	*texture_floor;

@@ -6,7 +6,7 @@
 /*   By: misaguir <misaguir@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 13:01:45 by misaguir          #+#    #+#             */
-/*   Updated: 2024/05/02 11:57:14 by misaguir         ###   ########.fr       */
+/*   Updated: 2024/05/04 14:34:22 by misaguir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@ static	void	init_data(t_game *data)
 	data->exit = 0;
 	data->x = 0;
 	data->y = 0;
-	data->init_x = 0;
-	data->init_y = 0;
 	data->init_mlx = 0;
 	data->move = 0;
 	return ;
