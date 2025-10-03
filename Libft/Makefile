@@ -30,7 +30,7 @@ SRCS_PRINTF = ft_printf.c ft_putnbr_pf.c ft_u.c \
 
 SRCS_GNL = get_next_line.c get_next_line_utils.c \
 				
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -fPIC
 OBJS_SRCS = $(SRCS:.c=.o)
 OBJS_BONUS = $(SRCS_BONUS:.c=.o)
 OBJS_PRINTF = $(SRCS_PRINTF:.c=.o)

@@ -16,7 +16,7 @@ NAME = so_long
 
 CC = gcc
 
-CFLAGS = -Wextra -Wall -Werror -g
+CFLAGS = -Wextra -Wall -Werror -g -fPIC
 
 MLX42 = ./MLX42
 
@@ -38,7 +38,7 @@ all: $(NAME)
 $(NAME):    $(OBJ)
 			@make all bonus printf gnl -C $(LIBFT)
 			@make -C $(MLX42)
-			@$(CC) $(CFLAGS) $(OBJ) -L$(LIBFT) -lft -L$(MLX42) -lmlx42 -framework Cocoa -framework OpenGL -framework IOKit -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib/" -o $(NAME)
+			@$(CC) $(CFLAGS) $(OBJ) -L$(LIBFT) -lft -L$(MLX42) -lmlx42 -ldl -lglfw -pthread -lm -o $(NAME)
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c | $(OBJF)
 			@$(CC) $(CFLAGS) -c $< -o $@
